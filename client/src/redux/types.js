@@ -1,0 +1,3 @@
+export const GET_BOOKS_REQUEST = "GET_BOOKS"
+export const GET_BOOKS_FAIL = "GET_BOOKS_FAIL"
+export const GET_BOOKS_SUCCESS = "GET_BOOKS_SUCCESS"
