@@ -1,6 +1,8 @@
-from flask import Flask
+from types import MethodType
+from flask import Flask,request
 from flask_cors import CORS
 from flask import jsonify
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -24,17 +26,48 @@ myBooks = [
      'first_sentence': 'to wound the autumnal city.',
      'published': '1975'}
 ]
+myUsers = [
+    {
+        "id": 1,
+        "username": "Randomhunter47",
+        "fullname": "Eugene Korir"
+    }
+]
 # print(myBooks)
+@app.route("/users")
+def users():
+    response = jsonify(myUsers)
+
+    return response
+
+@app.route("/time")
+def time():
+    return datetime.now()
+
 
 @app.route("/")
 def home():
-    return "Welcome home"
+    response = jsonify({"message": "Welcome home"})
+    return response
 
 @app.route("/books")
 def books():
     response = jsonify(myBooks)
 
     return response
+
+@app.route("/user",methods=['POST'])
+def book():
+    id = request.form.get("id", "")
+    title = request.form.get("title","")
+    # request.headers
+
+    # response = ({
+    #     "id" : id,
+    #     "title" : title
+    #     })
+    return request.headers
+
 
 
 if __name__ == "__main__":
