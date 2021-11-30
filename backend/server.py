@@ -68,6 +68,16 @@ def book():
     #     })
     return request.headers
 
+@app.route("/login", methods=['POST'])
+def login():
+    username = request.form.get("username","")
+    password = request.form.get("password","")
+
+    if username  == myUsers.__contains__(username):
+        return "Successful login"
+    else:
+        return "An error occcured!"
+
 
 
 if __name__ == "__main__":
